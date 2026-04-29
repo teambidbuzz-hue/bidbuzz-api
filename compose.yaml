@@ -31,6 +31,7 @@ services:
       bidbuzz:
         aliases:
           - bidbuzz-php
+          - bidbuzz-php.railway.internal
     healthcheck:
       test: ["CMD-SHELL", "php-fpm-healthcheck || exit 1"]
       interval: 10s
