@@ -17,4 +17,8 @@ if [ "${LARAVEL_CACHE_CONFIG:-false}" = "true" ]; then
   gosu www-data php artisan route:cache
 fi
 
+if [ "$1" = "php-fpm" ] || [ "$1" = "php-fpm8.4" ]; then
+  exec "$@"
+fi
+
 exec gosu www-data "$@"
