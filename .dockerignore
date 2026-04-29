@@ -18,6 +18,7 @@
 **/.vscode
 **/.next
 **/.cache
+bootstrap/cache/*.php
 **/*.*proj.user
 **/*.dbmdl
 **/*.jfm

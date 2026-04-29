@@ -14,13 +14,10 @@ WORKDIR /var/www
 # Copy Laravel application code
 COPY . /var/www
 
-# Install Node.js dependencies and build assets
-RUN npm install && npm run build
-
 # Stage 2: Nginx production image
 FROM nginx:alpine
 
-ENV PHP_FPM_HOST=127.0.0.1
+ENV PHP_FPM_HOST=bidbuzz-php
 ENV PHP_FPM_PORT=9000
 
 # Copy custom Nginx configuration
