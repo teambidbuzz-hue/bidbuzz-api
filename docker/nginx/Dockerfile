@@ -20,12 +20,15 @@ RUN npm install && npm run build
 # Stage 2: Nginx production image
 FROM nginx:alpine
 
+ENV PHP_FPM_HOST=127.0.0.1
+ENV PHP_FPM_PORT=9000
+
 # Copy custom Nginx configuration
 # -----------------------------------------------------------
-# Replace the default Nginx configuration with our custom one
-# that is optimized for serving a Laravel application.
+# The official Nginx image renders templates from /etc/nginx/templates
+# at container startup, so Kubernetes can override the PHP upstream.
 # -----------------------------------------------------------
-COPY ./docker/nginx/nginx.conf /etc/nginx/nginx.conf
+COPY ./docker/nginx/nginx.conf /etc/nginx/templates/default.conf.template
 
 # Copy Laravel's public assets from the builder stage
 # -----------------------------------------------------------

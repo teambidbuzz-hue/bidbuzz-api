@@ -9,6 +9,9 @@ services:
       - bidbuzz-public-assets:/var/www/public/build:ro
     networks:
       - bidbuzz
+    environment:
+      PHP_FPM_HOST: php-fpm
+      PHP_FPM_PORT: 9000
     ports:
       - "${NGINX_PORT:-80}:80"
     depends_on:
